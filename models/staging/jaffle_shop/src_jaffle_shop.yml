@@ -5,14 +5,14 @@ sources:
       description: a copy of a Postgres application database
       database: 'dbt-tutorial'
       tables:
-       - name: customers
+       - name: customers 
          description: raw customers data
          columns: 
          - name: id
            description: primary key for customers data
            tests:
-              - unique
               - not_null
+              - unique
        - name: orders
          loaded_at_field: _etl_loaded_at
          freshness:
@@ -22,5 +22,6 @@ sources:
           - name: id
             description: primary key for orders data
             tests:
-              - unique
               - not_null
+              - unique
+
