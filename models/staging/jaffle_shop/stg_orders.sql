@@ -11,5 +11,3 @@ with orders as (
 )
 
 select * from orders
-
-group by 1
