@@ -4,10 +4,6 @@ models:
   - name: stg_payments
     description: one customer per payment
     columns:
-     - name: order_id
-       tests:
-         - unique
-         - not_null
      - name: payment_id
        tests:
          - unique

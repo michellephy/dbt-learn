@@ -5,3 +5,4 @@ select
 
 from {{ source('jaffle_shop', 'customers')  }}
 
+ORDER by customer_id ASC
