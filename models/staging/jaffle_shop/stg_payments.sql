@@ -8,7 +8,7 @@ with payments as (
         amount/100 as amount,
         created
 
-    from `dbt-tutorial.stripe.payment`
+    from {{ source('stripe', 'payment')  }}
 )
 
 select * from payments

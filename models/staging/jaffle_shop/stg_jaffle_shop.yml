@@ -2,28 +2,40 @@ version: 2
 
 models:
   - name: stg_payments
+    description: one customer per payment
     columns:
      - name: customer_id
        tests:
          - unique
          - not_null
-     - name: payment)id
+     - name: payment_id
        tests:
          - unique
          - not_null
+     - name: status
+       description: "{{ doc('payment_status')  }}"
+       tests:
+        - accepted_values:
+           values:
+             - success
+             - fail
   - name: stg_customers
+    description: one unique customer per row
     columns: 
       - name: customer_id
+        description: primary key for stg_customers
         tests:
           - unique
           - not_null
   - name: stg_orders
     columns: 
       - name: order_id
+        description: one unique id per order
         tests:
           - unique
           - not_null
       - name: status
+        description: "{{ doc('order_status')  }}"
         tests:
           - accepted_values:
               values:
@@ -33,6 +45,7 @@ models:
                 - placed
                 - return_pending
       - name: customer_id
+        description: each customer id corresponds to an order
         tests:
           - relationships:
               to: ref('stg_customers')
