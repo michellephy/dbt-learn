@@ -5,7 +5,7 @@ with payments as (
         orderid as order_id,
         paymentmethod,
         status,
-        amount/100 as amount,
+        {{cents_to_dollars('amount') }} as amount,
         created
 
     from {{ source('stripe', 'payment')  }}
